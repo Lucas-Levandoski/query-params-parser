@@ -1,0 +1,26 @@
+{
+  "name": "query-params-parser",
+  "author": "Lucas Levandoski",
+  "version": "0.1.0",
+  "description": "A simple library to parse query params into proper types",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lucas-Levandoski/query-params-parser"
+  },
+  "bugs": {
+    "url": "https://github.com/Lucas-Levandoski/query-params-parser/issues"
+  },
+  "keywords": [
+    "location",
+    "search",
+    "query",
+    "params",
+    "url",
+    "parser"
+  ],
+  "license": "ISC"
+}
