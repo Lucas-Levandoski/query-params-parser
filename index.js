@@ -1,15 +1,15 @@
-export function readParams(baseClass, params = new URLSearchParams(window.location.search), arrSeparator = ',') {
+export default function parseParams(baseObject, params = new URLSearchParams(window.location.search), arrSeparator = ',') {
   if(!params?.get) throw new Error('search params must be initialized like "new URLSearchParams(query)"');
   if(!arrSeparator) throw new Error('arr separator must not be empty');
-  if(!baseClass || typeof(baseClass) !== 'object') throw new Error('baseClass property must be declared and a object');
+  if(!baseObject || typeof(baseObject) !== 'object') throw new Error('baseObject property must be declared and a object');
 
   const obj = {};
 
-  for(const key in baseClass) {    
+  for(const key in baseObject) {    
     const param = params.get(key);
 
     if(param !== null)  
-      obj[key] = parseByType(param, baseClass[key], arrSeparator);
+      obj[key] = parseByType(param, baseObject[key], arrSeparator);
     else 
       obj[key] = null;
   }
@@ -17,7 +17,7 @@ export function readParams(baseClass, params = new URLSearchParams(window.locati
   return obj;
 }
 
-function parseByType (variable, property, arrSeparator) {
+export function parseByType (variable, property, arrSeparator) {
   if (typeof(variable) !== 'string') throw new Error('variable and type must be strings');
 
   let result;
@@ -44,7 +44,7 @@ function parseByType (variable, property, arrSeparator) {
 }
 
 
-function stringToBoolean (stringValue) {
+export function stringToBoolean (stringValue) {
   switch(stringValue?.toLowerCase()?.trim()){
       case "true": 
       case "yes": 
