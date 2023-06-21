@@ -28,6 +28,9 @@ This class will work for the following uri:
 home/page?prop1=value%20as%20string&prop2=100&prop3=no&prop4=item1,item2,item3
 
 and will return the following object:
+*/
+```
+```json
 {
     "prop1": "value as string",
     "prop2": 100,
@@ -38,7 +41,8 @@ and will return the following object:
         "item3"
     ]
 }
-*/
+```
+```jsx
 
 console.log('result by class', parseParams(new ReferenceClass()))
 
@@ -48,6 +52,8 @@ console.log('result by object', parseParams({prop1: '', prop2: 0}))
 
 ```
 
+
+### Running helpers
 ```jsx
 import { stringToBoolean, parseByType} from 'query-params-parser';
 
