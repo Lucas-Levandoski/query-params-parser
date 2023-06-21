@@ -13,7 +13,7 @@ It is only focused on fixing the query/search params, the one you get from windo
 
 ### .js / .ts
 
-```
+```jsx
 import parseParams from 'query-params-parser';
 
 class ReferenceClass {
@@ -48,7 +48,7 @@ console.log('result by object', parseParams({prop1: '', prop2: 0}))
 
 ```
 
-```
+```jsx
 import { stringToBoolean, parseByType} from 'query-params-parser';
 
 const byType = parseByType('item1, item2', [], ', '); 
