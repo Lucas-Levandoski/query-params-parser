@@ -1,7 +1,7 @@
 export default function parseParams(baseObject, params = new URLSearchParams(window.location.search), arrSeparator = ',') {
+  if(!baseObject || typeof(baseObject) !== 'object') throw new Error('baseObject property must be declared and a object');
   if(!params?.get) throw new Error('search params must be initialized like "new URLSearchParams(query)"');
   if(!arrSeparator) throw new Error('arr separator must not be empty');
-  if(!baseObject || typeof(baseObject) !== 'object') throw new Error('baseObject property must be declared and a object');
 
   const obj = {};
 
