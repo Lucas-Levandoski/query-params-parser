@@ -1,10 +1,13 @@
 {
   "name": "query-params-parser",
   "author": "Lucas Levandoski",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "A simple library to parse query params into proper types",
   "main": "index.js",
   "type": "module",
+  "engines": {
+    "node": ">15.14.0"
+  },
   "types": "index.d.ts",
   "scripts": {
     "test": "node index.test.js"

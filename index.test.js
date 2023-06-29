@@ -1,12 +1,13 @@
-import assert, { strictEqual } from 'node:assert';
+import assert from 'node:assert';
 import parseParams , { parseByType, stringToBoolean } from './index.js';
+
 
 {
   // testing the parse Params
   {
     assert.throws(() => {
       const result = parseParams('not an object', new URLSearchParams(''));
-    }, 
+    },
     {
       message: 'baseObject property must be declared and a object'
     })
@@ -64,12 +65,16 @@ import parseParams , { parseByType, stringToBoolean } from './index.js';
       {
         value: 'var1,var2',
         type: [],
-        expected: ['var1', 'var2']
+        expected: [ 'var1', 'var2' ]
       },
     ]
 
     for(const toParse of toBeParsed) {
-      assert(parseByType(toParse.value, toParse.type, ','), toParse.expected);
+      assert.deepEqual(
+        parseByType(toParse.value, toParse.type, ','), 
+        toParse.expected, 
+        `type (${typeof(toParse.type)}) is failing`
+      );
     }
   }
 }
@@ -82,7 +87,7 @@ import parseParams , { parseByType, stringToBoolean } from './index.js';
     const trueStrings = ['yes', 'YeS', '1', 'true', 'TrUe'];
 
     for(const string of trueStrings) {
-      strictEqual(stringToBoolean(string), true);
+      assert.strictEqual(stringToBoolean(string), true);
     }
   }
  
@@ -90,7 +95,7 @@ import parseParams , { parseByType, stringToBoolean } from './index.js';
     const trueStrings = ['no', 'nO', '0', undefined, null];
 
     for(const string of trueStrings) {
-      strictEqual(stringToBoolean(string), false);
+      assert.strictEqual(stringToBoolean(string), false);
     }
   } 
 }
