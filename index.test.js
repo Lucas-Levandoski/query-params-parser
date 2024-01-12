@@ -6,7 +6,7 @@ import parseParams , { parseByType, stringToBoolean } from './index.js';
   // testing the parse Params
   {
     assert.throws(() => {
-      const result = parseParams('not an object', new URLSearchParams(''));
+      parseParams('not an object', new URLSearchParams(''));
     },
     {
       message: 'baseObject property must be declared and a object'
@@ -15,8 +15,7 @@ import parseParams , { parseByType, stringToBoolean } from './index.js';
 
   {
     assert.throws(() => {
-      const result = parseParams({ item1: 0}, null, null);
-      
+      parseParams({ item1: 0}, null, null);
     }, 
     {
       message:  'search params must be initialized like "new URLSearchParams(query)"'
@@ -26,7 +25,7 @@ import parseParams , { parseByType, stringToBoolean } from './index.js';
 
   { 
     assert.throws(() => {
-      const result = parseParams({ item1: 0}, new URLSearchParams(''), null);
+      parseParams({ item1: 0}, new URLSearchParams(''), null);
     }, 
     {
       message: 'arr separator must not be empty'
@@ -82,7 +81,6 @@ import parseParams , { parseByType, stringToBoolean } from './index.js';
 
 {
   // testing stringToBoolean
-
   {
     const trueStrings = ['yes', 'YeS', '1', 'true', 'TrUe'];
 
@@ -90,7 +88,7 @@ import parseParams , { parseByType, stringToBoolean } from './index.js';
       assert.strictEqual(stringToBoolean(string), true);
     }
   }
- 
+
   {
     const trueStrings = ['no', 'nO', '0', undefined, null];
 
