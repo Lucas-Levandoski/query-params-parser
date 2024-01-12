@@ -18,7 +18,9 @@ export function parseParams(baseObject, params = new URLSearchParams(window.loca
 export function setParams(baseObject, params = new URLSearchParams(window.location.search), arrSeparator = ',') {
   errorsCheck(baseObject, params, arrSeparator);
 
-  for(const [key, value] in Object.entries(baseObject)) {
+  for(const [key, value] of Object.entries(baseObject)) {
+    if(!value) continue;
+
     if(params.has(key)) {
       params.set(key, value)
       continue;
@@ -26,6 +28,8 @@ export function setParams(baseObject, params = new URLSearchParams(window.locati
 
     params.append(key, value)
   }
+
+  updateUrl(params);
 }
 
 export function parseByType(variable, property, arrSeparator) {
