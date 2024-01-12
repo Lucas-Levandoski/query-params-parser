@@ -32,6 +32,14 @@ export function setParams(baseObject, params = new URLSearchParams(window.locati
   updateUrl(params);
 }
 
+export function removeParamsForObj(baseObject, params = new URLSearchParams(window.location.search)) {
+  for(const key in baseObject) {
+    params.delete(key);
+  }
+
+  updateUrl(params);
+}
+
 export function parseByType(variable, property, arrSeparator) {
   if (typeof(variable) !== 'string') throw new Error('variable and type must be strings');
 
