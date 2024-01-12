@@ -19,7 +19,10 @@ export function setParams(baseObject, params = new URLSearchParams(window.locati
   errorsCheck(baseObject, params, arrSeparator);
 
   for(const [key, value] of Object.entries(baseObject)) {
-    if(!value) continue;
+    if(!value) {
+      params.delete(key);
+      continue;
+    }
 
     if(params.has(key)) {
       params.set(key, value)
