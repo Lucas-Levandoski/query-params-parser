@@ -74,6 +74,13 @@ export function stringToBoolean (stringValue) {
   }
 }
 
+function updateUrl(queryParams) {
+  const hasQueryParams = queryParams.toString() !== '';
+
+  const newUrl = `${window.location.pathname}?${queryParams.toString()}`;
+  window.history.pushState({}, '', hasQueryParams ? newUrl : window.location.pathname);
+}
+
 function errorsCheck(baseObject, params, arrSeparator) {
   if(!baseObject || typeof(baseObject) !== 'object') throw new Error('baseObject property must be declared and a object');
   if(!params?.get) throw new Error('search params must be initialized like "new URLSearchParams(query)"');
