@@ -1,5 +1,5 @@
 import assert from 'node:assert';
-import parseParams , { parseByType, stringToBoolean } from './index.js';
+import { parseParams, parseByType, stringToBoolean } from './index.js';
 
 
 {
